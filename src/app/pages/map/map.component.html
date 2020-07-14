@@ -1,0 +1,37 @@
+<google-map
+        height="100vh"
+        width="100%"
+        [center]="center"
+        [options]="options"
+        #map
+>
+    <map-marker
+            *ngFor="let marker of makersList"
+            [position]="marker.position"
+            [label]="marker.name"
+            #element
+            (mapClick)="openInfo(element, marker)"
+            (mapMouseover)="openInfo(element, marker)"
+    >
+    </map-marker>
+    <map-info-window
+            class="info"
+            (close)="closeInfo()"
+            (mouseleave)="closeInfo()"
+    >
+        <div class="infoContent" *ngIf="data">
+            <h3 *ngIf="data.name">{{data.name}}</h3>
+            <div *ngIf="data.description">description: {{data.description}}</div>
+            <div *ngIf="data.phone">Phone: {{data.phone}}</div>
+            <div *ngIf="data.category">Categories: {{data.category.join(',')}}</div>
+            <div *ngIf="data.positionSpecific || data.position">
+                Position: {{(data.positionSpecific || data.position || {}).formatted_address}}
+            </div>
+            <img *ngFor="let path of data.images || []" [src]='path.path'>
+        </div>
+
+
+    </map-info-window>
+</google-map>
+
+

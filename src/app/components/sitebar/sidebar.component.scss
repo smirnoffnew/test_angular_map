@@ -1,0 +1,62 @@
+.sitebar-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .action {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 20px;
+  }
+
+  .scrollable {
+    overflow-y: scroll;
+    height: 427px;
+    &.scrollable-history{
+      height: 594px;
+    }
+  }
+}
+
+
+.title {
+  width: 54%;
+  font-size: 15px;
+  margin-right: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.date {
+  font-size: 13px;
+  width: 44%;
+  color: gray;
+  margin-left: 10px;
+}
+
+.full-width {
+  width: calc(100% - 20px);
+  margin: 10px;
+}
+
+
+::ng-deep {
+  .button-flex {
+    padding: 0;
+  }
+  .mat-button-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  .mat-tab-body-content {
+    overflow: hidden!important;
+  }
+  .mat-tab-labels > div {
+    padding: 0;
+    min-width: 149px;
+  }
+}
+

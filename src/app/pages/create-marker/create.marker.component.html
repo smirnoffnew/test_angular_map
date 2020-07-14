@@ -1,0 +1,55 @@
+<div class="create-maker-container">
+    <form class="example-form" [formGroup]="MakerFormGroup" #form>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Name</mat-label>
+            <input formControlName="name" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Location</mat-label>
+            <input matInput #location>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Set category</mat-label>
+            <mat-select
+                formControlName="category"
+                (valueChange)="selectChangedValue($event)"
+                multiple>
+                <mat-option *ngFor="let element of arrayTypes" [value]="element">
+                    {{element.split('_').join(' ')}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Places</mat-label>
+            <mat-select (valueChange)="setSpecific($event)">
+                <mat-option *ngFor="let item of specificPosition" [value]="item">
+                    {{item.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Telephone</mat-label>
+            <span matPrefix>+</span>
+            <input formControlName="phone" type="tel" matInput placeholder="380684898680">
+        </mat-form-field>
+
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description">
+        </mat-form-field>
+
+        <app-upload-image (loadedPhoto)="loadedPhoto = $event"></app-upload-image>
+        <div class="actions">
+            <button mat-stroked-button color="warn" (click)="back()">Back</button>
+            <button mat-stroked-button color="accent" (click)="create()">Create Maker</button>
+        </div>
+
+    </form>
+</div>
+

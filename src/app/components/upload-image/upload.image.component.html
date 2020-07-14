@@ -1,0 +1,15 @@
+<div class="create-maker-container">
+    <input class="ng-hide" #input multiple type="file" (change)="previewFile($event.target.files)"/>
+    <button mat-stroked-button color="primary" class="choose" (click)="input.click()">Choose Files</button>
+    <div class="image-preview">
+        <div
+            class="card"
+            *ngFor="let photo of loadedPhoto; let i = index"
+            (dblclick)="setAsMain(photo)"
+        >
+            <div class="close" (click)="deleteImage(photo)">X</div>
+            <img [class.main]="photo.isMain" [src]="photo.path">
+        </div>
+    </div>
+</div>
+
